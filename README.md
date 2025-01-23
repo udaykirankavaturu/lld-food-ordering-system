@@ -33,22 +33,17 @@ This C++ program implements a simplified food ordering system with features like
 - Delivery executives can accept, pick up, and deliver orders.
 - The `DeliveryExecutiveManager` class manages the onboarding and assignment of delivery executives.
 
-### 6. Payment Processing
-
-- `Payment` class handles payment processing for orders.
-- Payment states include **Initiated**, **Completed**, and **Cancelled**.
-
 ---
 
 ## Design Patterns Used
 
 ### 1. **Observer Pattern**
 
-- The `Order` class acts as a subject, notifying observers (e.g., customers, delivery executives) about order updates.
+- The `Order` class acts as a subject, notifying observers (e.g., customers) about order updates.
 
 ### 2. **State Pattern**
 
-- The program uses the state pattern to manage order states (`PlacedState`, `ConfirmedState`, etc.) and payment states (`InitiatedState`, `CompletedState`, etc.).
+- The program uses the state pattern to manage order states (`PlacedState`, `ConfirmedState`, etc.) and delivery executive states.
 
 ### 3. **Singleton Pattern**
 
@@ -94,17 +89,13 @@ This C++ program implements a simplified food ordering system with features like
 
 ### Supporting Classes
 
-1. **Payment**
-
-   - Handles payment processing for orders.
-
-2. **OrderManager**
+1. **OrderManager**
 
    - Manages the creation and processing of orders.
 
-3. **DeliveryExecutiveManager**
+2. **DeliveryExecutiveManager**
 
-   - Manages the onboarding and assignment of delivery executives.
+   - Manages the assignment of delivery executives.
 
 ---
 
