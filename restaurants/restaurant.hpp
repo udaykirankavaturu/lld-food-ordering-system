@@ -3,6 +3,8 @@
 
 #include "../utils/location.hpp"
 
+class Menu;
+
 class Restaurant {
     public:
         int id;
@@ -10,12 +12,13 @@ class Restaurant {
         string mobile;
         string address;
         Location* location;
-        // Menu* menu;
+        Menu* menu;
         // OrderManager* orderManager;
         // vector<Order*> orders;
 
         Restaurant(int id, string name, string mobile, string address, Location* location);
-        // void addMenu(Menu* menu);
+        void addMenu(Menu* menu);
+        Menu* getMenu();
         // void addOrder(Order* order);
         // void confirmOrder(Order* order);
         // void prepareOrder(Order* order);
