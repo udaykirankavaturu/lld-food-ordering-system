@@ -2,6 +2,7 @@
 #include "../restaurants/restaurant.hpp"
 #include "../users/user.hpp"
 #include "../restaurants/menu-item.hpp"
+#include "../states/order-state.hpp"
 #include <iostream>
 using namespace std;
 
@@ -20,4 +21,32 @@ void Order::getOrderDetails(){
     for(int i = 0; i < items.size(); i++){
         cout<<items[i]->title<<endl;
     }
+}
+
+void Order::setState(OrderState* orderState){
+    this->orderState = orderState;
+}
+
+void Order::getState(){
+    cout<<this->orderState->name<<endl;
+}
+
+void Order::placeOrder(){
+    this->orderState = new PlacedState(this);
+}
+
+void Order::confirmOrder(){
+    this->orderState->confirmOrder();
+}
+
+void Order::prepareOrder(){
+    this->orderState->prepareOrder();
+}
+
+void Order::dispatchOrder(){
+    this->orderState->dispatchOrder();
+}
+
+void Order::deliverOrder(){
+    this->orderState->deliverOrder();
 }

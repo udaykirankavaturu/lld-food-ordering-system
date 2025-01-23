@@ -54,7 +54,7 @@ int main(){
     orderItems.push_back(mi2);
 
     om->createOrder(orderItems, c1, r1);
-    om->getOrders();
+    // om->getOrders();
 
     cout<<"all good!"<<endl;
 

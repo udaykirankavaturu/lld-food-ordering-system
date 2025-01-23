@@ -3,6 +3,7 @@
 #include "../restaurants/restaurant.hpp"
 #include "../restaurants/menu-item.hpp"
 #include "../users/user.hpp"
+#include "../states/order-state.hpp"
 
 #include <iostream>
 #include <vector>
@@ -11,6 +12,9 @@ using namespace std;
 void OrderManager::createOrder(vector<MenuItem*> items, Customer* customer, Restaurant* restaurant){
     Order* o1 = new Order(orders.size()+1,restaurant, customer, items);
     cout<<"new order created"<<endl;
+
+    o1->placeOrder();
+    o1->getState();
 
     orders.push_back(o1);
 }
