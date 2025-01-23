@@ -1,7 +1,9 @@
 #include <string>
 using namespace std;
 
+class Order;
+
 class Observer {
 public:
-    virtual void update(const string& message) = 0;
+    virtual void update(Order* order) = 0;
 };

@@ -5,6 +5,7 @@
 using namespace std;
 
 class DeliveryExecutive;
+class Order;
 
 
 class DeliveryExecutiveManager {
@@ -12,6 +13,7 @@ class DeliveryExecutiveManager {
         vector<DeliveryExecutive*> deliveryExecutives;
 
         void addDeliveryExecutive(DeliveryExecutive* deliveryExecutive);
+        void assignExecutive(Order* order);
 };
 
 #endif // __DEM_HPP

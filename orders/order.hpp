@@ -18,7 +18,7 @@ class Order {
         vector<MenuItem*> items;
         OrderState* orderState;
 
-        Order(int id,Restaurant* restaurant, Customer* customer, vector<MenuItem*> items);
+        Order(int id, Restaurant* restaurant, Customer* customer, vector<MenuItem*> items);
         void getOrderDetails();
 
         void setState(OrderState* orderState);

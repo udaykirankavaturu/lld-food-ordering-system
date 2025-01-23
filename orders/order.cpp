@@ -33,20 +33,25 @@ void Order::getState(){
 
 void Order::placeOrder(){
     this->orderState = new PlacedState(this);
+    this->customer->update(this);
 }
 
 void Order::confirmOrder(){
     this->orderState->confirmOrder();
+    this->customer->update(this);
 }
 
 void Order::prepareOrder(){
     this->orderState->prepareOrder();
+    this->customer->update(this);
 }
 
 void Order::dispatchOrder(){
     this->orderState->dispatchOrder();
+    this->customer->update(this);
 }
 
 void Order::deliverOrder(){
     this->orderState->deliverOrder();
+    this->customer->update(this);
 }

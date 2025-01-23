@@ -11,6 +11,7 @@
 
 using namespace std;
 
+
 class User : public Observer {
 public:
     int id;
@@ -19,7 +20,7 @@ public:
 
     User(int id, string name, string mobile);
 
-    void update(const string& message) override;
+    void update(Order* order) override;
 };
 
 class Customer : public User {
@@ -42,8 +43,7 @@ class DeliveryExecutive : public User {
     DeliveryExecutive(int id, string name, string mobile, Location* location, DeliveryExecutiveManager* dem);
 
     void setState(DEState* state);
-    void receiveOrder(Order* order);
-    void acceptOrder(Order* order);
+    void assignOrder(Order* order);
     void navigate(Order* order, bool pickup);
     void pickUpOrder(Order* order);
     void deliverOrder(Order* order);

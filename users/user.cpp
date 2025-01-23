@@ -1,6 +1,7 @@
 #include "user.hpp"
 #include "../states/de-state.hpp"
 #include "../orders/order.hpp"
+#include "../restaurants/restaurant.hpp"
 #include <string>
 
 User::User(int id, string name, string mobile) {
@@ -9,8 +10,8 @@ User::User(int id, string name, string mobile) {
         this->mobile = mobile;
     }
 
-void User::update(const string& message) {
-    cout << "User " << name << " received message: " << message << endl;
+void User::update(Order* order) {
+    order->getState();
 }
 
 Customer::Customer(int id, string name, string mobile, Location* location) : User(id, name, mobile) {
@@ -32,23 +33,23 @@ void DeliveryExecutive::setState(DEState* state) {
     this->state = state;
 }
 
-void DeliveryExecutive::receiveOrder(Order* order) {
-    cout << "Order received by DE" << endl;
-    this->acceptOrder(order);
-}
-
-void DeliveryExecutive::acceptOrder(Order* order) {
-    cout << "Order accepted by DE" << endl;
+void DeliveryExecutive::assignOrder(Order* order) {
+    cout << "Order accepted by delivery executive" << endl;
     this->state->processOrder();
+
+    // navigate to restaurant for pickup
     this->navigate(order, true);
+
+    // navigate to customer for delivery
+    this->navigate(order, false);
 }
 
 void DeliveryExecutive::navigate(Order* order,bool pickup) {
     if (pickup) {
-        cout << "DE is navigating to " << order->location->latitude << " " << order->location->longitude << " to pick up order" << endl;
+        cout << "DE is navigating to " << order->restaurant->location->latitude << " " << order->restaurant->location->longitude << " to pick up order" << endl;
         this->pickUpOrder(order);
     } else {
-        cout << "DE is navigating to customer location " << order->location->latitude << " " << order->location->longitude << endl;
+        cout << "DE is navigating to customer location " << order->customer->location->latitude << " " << order->customer->location->longitude << endl;
         this->deliverOrder(order);
     }
 }
@@ -58,5 +59,5 @@ void DeliveryExecutive::pickUpOrder(Order* order) {
 }
 
 void DeliveryExecutive::deliverOrder(Order* order) {
-    cout << "Order delivered by DE" << endl;
+    order->deliverOrder();
 }
